@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YouTube Sync Player</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>YouTube Sync Player</h1>
+          <p>Dán 2 iframe hoặc 2 link YouTube, rồi điều khiển đồng bộ.</p>
+        </div>
+        <div class="app-status" id="appStatus">Chưa tải video</div>
+      </header>
+
+      <section class="source-panel" aria-labelledby="sourceTitle">
+        <div class="section-title">
+          <h2 id="sourceTitle">Nguồn video</h2>
+          <span id="loadMessage" class="load-message" role="status" aria-live="polite"></span>
+        </div>
+
+        <form class="source-form" id="sourceForm">
+          <label class="field">
+            <span>Iframe hoặc link YouTube</span>
+            <textarea
+              id="videoInput"
+              rows="4"
+              autocomplete="off"
+              placeholder="Dán 2 iframe hoặc 2 link YouTube vào đây"
+              required
+            ></textarea>
+          </label>
+
+          <button class="primary-button" type="submit">Tải 2 player</button>
+        </form>
+      </section>
+
+      <section class="player-grid" aria-label="Hai player YouTube">
+        <article class="player-card">
+          <div class="player-heading">
+            <h2>Player 1</h2>
+            <span class="state-pill" id="state0">Trống</span>
+          </div>
+          <div class="frame-wrap">
+            <div class="player-slot" id="player0">
+              <div class="empty-player">Player 1</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="player-card">
+          <div class="player-heading">
+            <h2>Player 2</h2>
+            <span class="state-pill" id="state1">Trống</span>
+          </div>
+          <div class="frame-wrap">
+            <div class="player-slot" id="player1">
+              <div class="empty-player">Player 2</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="transport" aria-label="Điều khiển đồng bộ">
+        <button class="control-button" type="button" id="backButton" disabled>Lùi 5s</button>
+        <button class="play-button" type="button" id="playPauseButton" disabled>Phát</button>
+        <button class="control-button" type="button" id="forwardButton" disabled>Tiến 5s</button>
+        <button class="control-button" type="button" id="syncButton" disabled>Đồng bộ lại</button>
+        <label class="delay-control">
+          <span>Player 1 chậm (s)</span>
+          <input id="delayInput" type="number" min="0" max="5" step="0.1" value="0.5" disabled />
+        </label>
+        <label class="speed-control">
+          <span>Tốc độ</span>
+          <select id="speedSelect" disabled>
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="1" selected>1x</option>
+            <option value="1.25">1.25x</option>
+            <option value="1.5">1.5x</option>
+            <option value="1.75">1.75x</option>
+            <option value="2">2x</option>
+          </select>
+        </label>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
